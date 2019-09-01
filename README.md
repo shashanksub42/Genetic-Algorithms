@@ -19,3 +19,16 @@ After filling up the mating pool with all the high fitness candidates, a random 
 
 
 **Selection** and **Mutation** are repeated in a loop, till the target word is achieved, and each time a new child is created, it replaces a word in the population, signifying the **New Generation**. 
+
+
+## Instructions to run
+Clone this repository by running `git clone https://github.com/shashanksub42/Genetic-Algorithms`
+Then navigate to `Genetic-Algorithms` using the command line, and run `python Genetic-Shakespere.py`. This will run the program with default values for target, population size and mutation_rate. These are set to:
+* target = 'to be or not to be'
+* population size = 700
+* mutation_rate = 0.01
+
+These arguments can be changed in command line as follows:
+* `python Genetic-Shakespere.py -t "any string of choice"`
+* `python Genetic-Shakespere.py -p some integer`
+* `python Genetic-Shakespere.py -m some small float`  
