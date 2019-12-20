@@ -24,18 +24,17 @@ args = parser.parse_args()
 
 #Generates a random word between the ascii numbers 32 and 127
 #These numbers correspond to characters 'a-z', 'A-Z', '0-9' and special characters like '$', '!', '%' etc
-def random_word_generator(length_of_word):
-    word = ''
+def random_word_generator(length_of_target):
+    random_target = ''
     i = 0
     char_list = []
     for j in range(32, 127):
         char_list.append(chr(j))
     
-    while i < length_of_word:
-        word = word + random.choice(char_list)
-        #word = word + random.choice(string.ascii_lowercase + string.whitespace)
+    while i < length_of_target:
+        random_target += random.choice(char_list)
         i += 1
-    return word
+    return random_target
 
 
 # In[288]:
@@ -53,7 +52,7 @@ def population(size):
 
 #This is where the fitness of each word is calculated
 #It first checks if the word in the population has characters that are also present in the target word
-#Then it checks if theses characters are in the same location as in the target word
+#Then it checks if these characters are in the same location as in the target word
 #If yes, then it increments the score variable
 #Finally it calculates the fitness by dividing the score with the length of the word.
 def fitness(target, word):
@@ -63,7 +62,6 @@ def fitness(target, word):
             if word[j] == target[j]:
                 score += 1
     fitness = score/len(target)
-        #print(pop[i], fitness)
     return fitness
 
 
@@ -75,7 +73,6 @@ def fitness(target, word):
 def crossover(a, b):
     child = ''
     midpoint = random.randint(0, len(a))
-    #print(midpoint)
     for i in range(len(a)):
         if i > midpoint:
             child = child + a[i]
@@ -88,7 +85,7 @@ def crossover(a, b):
 
 #The mutate function simply changes one character in the word, with some % chance. 
 #The mutation rate decides this % chance. 
-#We generate a random value between 0 and 1, and if this value is less thant our mutation rate, 
+#We generate a random value between 0 and 1, and if this value is less than our mutation rate, 
 #then the character is changed randomly to one of the characters withing the ascii range of 32 and 127
 def mutate(mutation_rate):
     triggered = False
